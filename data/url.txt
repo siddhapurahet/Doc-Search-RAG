@@ -1,0 +1,2 @@
+https://openai.com/index/openai-o1-system-card/
+https://arxiv.org/pdf/2403.05530
