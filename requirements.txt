@@ -1,5 +1,6 @@
 langchain
 langchain-community
+langchain-google-genai
 langchain-openai
 langgraph
 openai
@@ -8,5 +9,6 @@ pydantic
 python-dotenv
 beautifulsoup4
 requests
+sentence-transformers
 streamlit
 wikipedia
