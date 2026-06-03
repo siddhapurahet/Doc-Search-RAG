@@ -29,6 +29,7 @@ class Config:
         "https://lilianweng.github.io/posts/2023-06-23-agent/",
         "https://lilianweng.github.io/posts/2024-04-12-diffusion-video/"
     ]
+    DEFAULT_SOURCES = DEFAULT_URLS + ["data"]
 
     @classmethod
     def configure_api_key(cls):

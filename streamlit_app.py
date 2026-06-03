@@ -54,11 +54,11 @@ def initialize_rag():
         )
         vector_store = VectorStore()
 
-        # Use default URLS
-        urls = Config.DEFAULT_URLS
+        # Use default URLs and local documents
+        sources = Config.DEFAULT_SOURCES
 
         # Process documents
-        documents = doc_processor.process_documents(urls)
+        documents = doc_processor.process_documents(sources)
 
         #Create vector store
         vector_store.create_retriever(documents)

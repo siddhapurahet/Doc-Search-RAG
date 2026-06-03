@@ -6,22 +6,6 @@ import time
 
 from langgraph.graph import StateGraph, END
 from src.state.rag_state import RAGState
-
-# #region agent log
-def _dbg_log(hypothesis_id, location, message, data):
-    try:
-        with open("/Users/harshsiddhapura/Downloads/Het/Doc-Search-RAG/.cursor/debug-980812.log", "a") as f:
-            f.write(json.dumps({"sessionId": "980812", "hypothesisId": hypothesis_id, "location": location, "message": message, "data": data, "timestamp": int(time.time() * 1000)}) + "\n")
-    except Exception:
-        pass
-
-try:
-    _nodes_mod = importlib.import_module("src.nodes.nodes")
-    _dbg_log("A", "graph_builder.py:import", "nodes module loaded; checking exported names", {"dir_names": [n for n in dir(_nodes_mod) if not n.startswith("_")], "has_RAGNodes": hasattr(_nodes_mod, "RAGNodes"), "has_RAGNode": hasattr(_nodes_mod, "RAGNode")})
-except Exception as e:
-    _dbg_log("B", "graph_builder.py:import", "nodes module failed to load", {"error_type": type(e).__name__, "error": str(e)})
-# #endregion
-
 from src.nodes.nodes import RAGNodes
 # from src.nodes.reactnodes import RAGNodes
 
@@ -35,9 +19,6 @@ class GraphBuilder:
             retriever: Document retriever instance
             llm: Language model instance
         """
-        # #region agent log
-        _dbg_log("A", "graph_builder.py:__init__", "GraphBuilder init", {"has_retriever": retriever is not None, "has_llm": llm is not None})
-        # #endregion
         self.nodes = RAGNodes(retriever=retriever, llm=llm)
         self.graph = None
 

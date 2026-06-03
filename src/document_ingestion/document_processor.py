@@ -1,7 +1,5 @@
-from typing import List
-# from langchain_community.document_loaders import WebBaseLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.schema import Document
+from langchain_core.documents import Document
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from typing import List, Union
 from pathlib import Path
 from langchain_community.document_loaders import (
@@ -37,7 +35,7 @@ class DocumentProcessor:
         return documents
 
     def load_from_pdf_dir(self, directory: Union[str, Path]) -> List[Document]:
-        """Load documents from a PDF file."""
+        """Load all PDF documents from a directory."""
         loader = PyPDFDirectoryLoader(str(directory))
         documents = loader.load()
         return documents
@@ -50,7 +48,7 @@ class DocumentProcessor:
 
     def load_from_pdf(self, file_path: Union[str, Path]) -> List[Document]:
         """Load documents from a PDF file."""
-        loader = PyPDFDirectoryLoader(str("data"))
+        loader = PyPDFLoader(str(file_path))
         documents = loader.load()
         return documents
 
