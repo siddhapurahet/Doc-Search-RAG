@@ -17,19 +17,19 @@ class Config:
     LLM_MODEL_PROVIDER = "google_genai"
     LLM_MODEL = "gemini-2.5-flash"
     EMBEDDING_MODEL = "gemini-embedding-001"
-    EMBEDDING_PROVIDER = "local"  # "local" avoids Google free-tier embed rate limits
+    EMBEDDING_PROVIDER = "google"  # "local" avoids Google free-tier embed rate limits
     LOCAL_EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 
     #Document Processing
-    CHUNK_SIZE = 500
-    CHUNK_OVERLAP = 50
+    CHUNK_SIZE = 1500
+    CHUNK_OVERLAP = 100
 
     # Default url's
     DEFAULT_URLS = [
         "https://lilianweng.github.io/posts/2023-06-23-agent/",
         "https://lilianweng.github.io/posts/2024-04-12-diffusion-video/"
     ]
-    DEFAULT_SOURCES = DEFAULT_URLS + ["data"]
+    DEFAULT_SOURCES = DEFAULT_URLS[:1]
 
     @classmethod
     def configure_api_key(cls):
